@@ -26,7 +26,7 @@ function play() {
   if (randomNUmber1 > randomNUmber2) {
     document.querySelector('h1').textContent = `🚩 ${player1Name} wins!`
   } else if (randomNUmber1 < randomNUmber2) {
-    document.querySelector('h1').textContent = `${player2Name} wins! 🚩`
+    document.querySelector('h1').textContent = `Bubo${player2Name} wins! 🚩`
   } else {
     document.querySelector('h1').textContent = 'Draw!'
   }
