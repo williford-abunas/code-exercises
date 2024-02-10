@@ -7,10 +7,8 @@ function printForecast(arr) {
       forecast += `...${arr[i]}C in ${i + 1} days `
     }
 
-    return forecast
+    console.log(forecast)
   }
-
-  console.log(forecast)
 }
 
 printForecast([17, 21, 23])
