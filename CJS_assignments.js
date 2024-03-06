@@ -26,15 +26,15 @@ if (population > avgPop) {
   console.log(`${country}'s population is ${avgPop - population} below average`)
 }
 
-let numNeighbors = prompt('How many neighbour countries does your contry have?')
+// let numNeighbors = prompt('How many neighbour countries does your contry have?')
 
-if (Number(numNeighbors) === 1) {
-  console.log('Only 1 border!')
-} else if (Number(numNeighbors) > 1) {
-  console.log('More than 1 borders!')
-} else {
-  console.log('No borders')
-}
+// if (Number(numNeighbors) === 1) {
+//   console.log('Only 1 border!')
+// } else if (Number(numNeighbors) > 1) {
+//   console.log('More than 1 borders!')
+// } else {
+//   console.log('No borders')
+// }
 
 if (language === 'English' && population < 50000000 && isIsland === false) {
   console.log(`You should live in ${country}`)
@@ -116,6 +116,14 @@ console.log(populations.length === 4)
 const percentages = populations.map((p) => percentageOfWorld1(p))
 console.log(percentages)
 
+let percentages3 = []
+let count = 0
+while (count < populations.length) {
+  percentages3.push(percentageOfWorld3(populations[count]))
+  count++
+}
+console.log(percentages3)
+
 const neighbors = ['Indonesia', 'Taiwan', 'Singapore']
 neighbors.push('Utopia')
 console.log(neighbors)
@@ -145,3 +153,32 @@ myCountry.population += 2
 console.log(myCountry)
 
 console.log((myCountry['population'] -= 2))
+
+myCountry.describe = function () {
+  console.log(
+    `${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbors.length} neighbouring countries and a capital called ${this.capital}`
+  )
+}
+
+myCountry.describe()
+
+myCountry.checkIsland = function () {
+  console.log((this.isIsland = !Boolean(this.neighbors.length)))
+}
+
+myCountry.checkIsland()
+
+//LOOP
+for (let i = 1; i <= 50; i++) {
+  console.log(`Voter number ${i}`)
+}
+
+const listOfNeighbors = [
+  ['Canada', 'Mexico'],
+  ['Spain'],
+  ['Norway', 'Sweden', 'Russia'],
+]
+
+for (let i = 0; i < listOfNeighbors.length; i++) {
+  listOfNeighbors[i].forEach((l) => console.log(`Neighbor: ${l}`))
+}
