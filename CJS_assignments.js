@@ -1,3 +1,5 @@
+import { books } from './booksData.js'
+
 const country = 'Philippines'
 const continent = 'Asia'
 let population = 1000000
