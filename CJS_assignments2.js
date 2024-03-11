@@ -74,3 +74,91 @@ books.forEach(
   (book) =>
     book.onlineContent && console.log(`${book.title} provides online content`)
 )
+
+books.forEach(
+  (book) => book.onlineContent ?? console.log(`${book.title} provides no data`)
+)
+
+books.forEach((book) => (book.edition ||= 1))
+
+books.forEach(
+  (book) => (book.highlighted &&= !(book.thirdParty.goodreads.rating < 4.2))
+)
+
+let pageSum = 0
+
+for (const book of books) {
+  pageSum += book.pages
+}
+
+console.log(pageSum)
+
+const allAuthors = []
+
+// for (const book of books) {
+//   typeof book.author === 'string'
+//     ? allAuthors.push(book.author)
+//     : allAuthors.push(...book.author)
+// }
+
+for (const book of books) {
+  if (typeof book.author === 'string') {
+    allAuthors.push(book.author)
+  } else {
+    for (const author of book.author) {
+      allAuthors.push(author)
+    }
+  }
+}
+
+console.log(allAuthors)
+
+for (const [index, author] of allAuthors.entries()) {
+  console.log(`${index + 1}: ${author}`)
+}
+
+const bookData = [
+  ['title', 'Computer Networking: A Top-Down Approach'],
+  ['author', ['James F. Kurose', 'Keith W. Ross']],
+  ['publisher', 'Addison Wesley'],
+]
+
+const newBook = {
+  [bookData[0][0]]: bookData[0][1],
+  [bookData[1][0]]: bookData[1][1],
+  [bookData[2][0]]: bookData[2][1],
+}
+console.log(newBook)
+
+const pages = 880
+
+const newBook2 = {
+  title: 'The C Programming Language',
+  author: ['Brian W. Kernighan', 'Dennis M. Ritchie'],
+  pages,
+}
+
+console.log(newBook2)
+
+const getFirstKeyWord = function (book) {
+  return book.keywords?.[0]
+}
+
+console.log(getFirstKeyWord(newBook2))
+
+const entries = []
+for (const key of Object.keys(books[0].thirdParty.goodreads)) {
+  entries.push([key])
+}
+console.log(entries)
+
+for (const [index, value] of Object.values(
+  books[0].thirdParty.goodreads
+).entries()) {
+  entries[index].push(value)
+}
+
+console.log(entries)
+
+const entries2 = Object.entries(books[0].thirdParty.goodreads)
+console.log(entries2)
