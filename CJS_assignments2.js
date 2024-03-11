@@ -43,3 +43,34 @@ const printBookInfo = function ({ title, author, year = 'year unknown' }) {
   console.log(`${title} by ${author}, ${year}`)
 }
 printBookInfo(books[0])
+
+const bookAuthors = [...books[0].author, ...books[1].author]
+console.log(bookAuthors)
+
+const spellWord = function (word) {
+  console.log(...word)
+}
+
+spellWord('Javascript')
+
+const [mainKeyWord, ...rest] = books[0].keywords
+console.log(mainKeyWord, rest)
+
+const { publisher: bookPublisher, ...restOftheBook } = books[1]
+console.log(bookPublisher, restOftheBook)
+
+const printBookAuthorsCOunt = function (title, ...authors) {
+  console.log(`The book "${title}" has ${authors.length} authors.`)
+}
+printBookAuthorsCOunt('Algorithms', 'Robert Sedgewick', 'Kevin Wayne')
+
+const hasExamplesInJava = function (book) {
+  return book.programmingLanguage === 'Java' || 'no data available'
+}
+
+console.log(hasExamplesInJava(books[0]))
+
+books.forEach(
+  (book) =>
+    book.onlineContent && console.log(`${book.title} provides online content`)
+)
