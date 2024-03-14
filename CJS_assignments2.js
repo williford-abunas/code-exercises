@@ -162,3 +162,62 @@ console.log(entries)
 
 const entries2 = Object.entries(books[0].thirdParty.goodreads)
 console.log(entries2)
+
+//Sets
+const allKeywords = []
+
+// for (const book of books) {
+//   book.keywords.forEach((key) => allKeywords.push(key))
+// }
+
+for (const book of books) {
+  allKeywords.push(...book.keywords)
+}
+
+console.log(allKeywords)
+
+const uniqueKeyWords = new Set(allKeywords)
+
+console.log(uniqueKeyWords)
+
+uniqueKeyWords.add('coding').add('science')
+
+console.log(uniqueKeyWords)
+
+uniqueKeyWords.delete('business')
+console.log(uniqueKeyWords)
+
+const uniqueKeyWordsArr = [...uniqueKeyWords]
+
+console.log(uniqueKeyWordsArr)
+
+uniqueKeyWords.clear()
+
+const bookMap = new Map([
+  ['title', 'Clean Code'],
+  ['author', 'Robert C. Martin'],
+])
+
+console.log(bookMap)
+
+bookMap.set('pages', 464)
+console.log(bookMap)
+
+const title1 = bookMap.get('title')
+const author1 = bookMap.get('author')
+console.log(`${title1} by ${author1}`)
+
+const bookMapSize = bookMap.size
+console.log(bookMapSize)
+
+if (bookMap.has('author')) console.log('The author of the book is known.')
+
+console.log(books)
+const firstBookMap = new Map(Object.entries(books[0]))
+console.log(firstBookMap)
+
+for (const [key, value] of firstBookMap) {
+  typeof value === 'number'
+    ? console.log(`This ${key} has number value.`)
+    : console.log(`This ${key}'s value is not a number.`)
+}
