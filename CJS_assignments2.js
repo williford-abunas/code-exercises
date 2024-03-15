@@ -221,3 +221,101 @@ for (const [key, value] of firstBookMap) {
     ? console.log(`This ${key} has number value.`)
     : console.log(`This ${key}'s value is not a number.`)
 }
+
+//Working with Strings
+console.log(
+  books[0].ISBN[6],
+  books[0].ISBN[4],
+  books[0].ISBN[9],
+  books[0].ISBN[8]
+)
+
+const quote =
+  'A computer once beat me at chess, but it was no match for me at kick boxing'
+console.log(quote.indexOf('chess'))
+
+console.log(quote.slice([quote.indexOf('boxing')], 'boxing'.length))
+console.log(quote.slice(quote.lastIndexOf(' ') + 1))
+
+const isContributor = function (author) {
+  console.log(author.includes('(Contributor)'))
+}
+
+isContributor('Julie Sussman (Contributor)')
+isContributor('Robert Sedgewick')
+
+const normalizeAuthorName = function (author) {
+  author = author.trim().toLowerCase()
+  let firstName = author.slice(0, author.indexOf(' '))
+
+  let lastName
+  if (author.indexOf(' ') === author.lastIndexOf(' ')) {
+    lastName = author.slice(author.indexOf(' ') + 1, author.length)
+  } else {
+    lastName = author.slice(author.indexOf(' ') + 1, author.lastIndexOf(' '))
+  }
+
+  let first = firstName[0].toUpperCase() + firstName.slice(1)
+  let last = lastName[0].toUpperCase() + lastName.slice(1)
+  const fullName = first + ' ' + last
+  console.log(fullName)
+}
+normalizeAuthorName('  JuliE sussMan (Contributor)')
+
+const secondTitle = books[1].title
+const newBookTitle = secondTitle.replace('Programs', 'Software')
+console.log(newBookTitle)
+
+const logBookTheme = function (title) {
+  title = title.trim().toLowerCase()
+  if (title.split(' ')[0] === 'computer') {
+    console.log('This book is about computers.')
+  } else if (title.includes('algorithms') && title.includes('structures')) {
+    console.log('This book is about algorithms and data structures')
+  } else if (
+    title.endsWith('system') ||
+    (title.endsWith('systems') && !title.includes('operating'))
+  ) {
+    console.log(
+      'This book is about some systems, but definitely not about operating systems'
+    )
+  }
+}
+console.log(books[4].title)
+logBookTheme(books[4].title)
+
+const logBookCategories = function (categories) {
+  categories.split(';').forEach((c) => console.log(c))
+}
+
+const bookCategories =
+  'science;computing;computer science;algorithms;business;operating systems;networking;electronics'
+logBookCategories(bookCategories)
+
+const getKeywordsAsString = function (books) {
+  let keywordArray = []
+  for (const book of books) {
+    book.keywords.forEach((k) => keywordArray.push(k))
+  }
+
+  const unique = [...new Set(keywordArray)].join(';')
+  console.log(unique)
+}
+
+getKeywordsAsString(books)
+
+const logBookChapters = function (chapters) {
+  for (const entry of chapters) {
+    let [title, page] = entry
+    console.log(title.padEnd(20, '_') + ' ' + page)
+  }
+}
+
+const bookChapters = [
+  ['The Basics', 14],
+  ['Sorting', 254],
+  ['Searching', 372],
+  ['Graphs', 526],
+  ['Strings', 706],
+]
+logBookChapters(bookChapters)
